@@ -31,13 +31,13 @@ def create(ssid: str, password: str, filename: str):
     wifi_y = 180
     image.paste(wifi_icon, (wifi_x, wifi_y))
 
-    font = ImageFont.truetype("data/arial/arial-bold.ttf", 36)
+    font = ImageFont.truetype("data/arial-bold.ttf", 36)
     draw = ImageDraw.Draw(image)
     ssid_x = (width - font.getsize(ssid)[0]) // 2
     ssid_y = wifi_y + wifi_icon.height + 20
     draw.text((ssid_x, ssid_y), ssid, font=font, fill="black")
 
-    font = ImageFont.truetype("data/arial/arial.ttf", 36)
+    font = ImageFont.truetype("data/arial.ttf", 36)
     key_x = (width - key_icon.width - font.getsize(password)[0] - 10) // 2
     key_y = ssid_y + font.getsize(ssid)[1] + 20
     image.paste(key_icon, (key_x, key_y))
@@ -57,6 +57,7 @@ def main():
     password = os.getenv("PASSWORD")
     filename = os.getenv("FILENAME")
     create(ssid=ssid, password=password, filename=filename)
+
 
 if __name__ == "__main__":
     main()
